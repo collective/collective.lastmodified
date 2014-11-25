@@ -5,17 +5,24 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="collective.lastmodified">
 
-  <five:registerPackage package="." initialize=".initialize" />
+    <include package=".browser" />
 
-  <includeDependencies package="." />
+    <include package="archetypes.schemaextender" />
 
-  <genericsetup:registerProfile
-      name="default"
-      title="collective.lastmodified"
-      directory="profiles/default"
-      description="Installs the collective.lastmodified package"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-  <!-- -*- extra stuff goes here -*- -->
+    <genericsetup:registerProfile
+        name="default"
+        title="collective.lastmodified"
+        directory="profiles/default"
+        description="Installs the collective.lastmodified package"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <!-- -*- extra stuff goes here -*- -->
+    <adapter 
+        factory=".extender.DocumentExtender" 
+        provides="archetypes.schemaextender.interfaces.ISchemaExtender"
+        />
+    
+    <i18n:registerTranslations directory="locales" />
 
 </configure>

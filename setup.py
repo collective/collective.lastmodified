@@ -13,7 +13,7 @@ long_description = (
 
 setup(name='collective.lastmodified',
       version=version,
-      description="",
+      description="Adds a viewlet that displays the last modification date",
       long_description=long_description,
       # Get more strings from
       # http://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -30,8 +30,8 @@ setup(name='collective.lastmodified',
         "Topic :: Software Development :: Libraries :: Python Modules",
       ],
       keywords='',
-      author='',
-      author_email='',
+      author='Bram Pauwels',
+      author_email='brpauwels@cibg.irisnet.be',
       url='https://github.com/collective/',
       license='gpl',
       packages=find_packages('src'),
@@ -45,7 +45,7 @@ setup(name='collective.lastmodified',
       ],
       extras_require={'test': ['plone.app.testing[robot]>=4.2.2']},
       entry_points="""
-      # -*- Entry points: -*- 
+      # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
       target = plone
       """
