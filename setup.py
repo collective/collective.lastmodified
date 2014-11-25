@@ -4,11 +4,11 @@ import os
 version = '1.0'
 
 long_description = (
-    open('README.txt').read()
+    open('README.rst').read()
     + '\n' +
-    open('CONTRIBUTORS.txt').read()
+    open('CONTRIBUTORS.rst').read()
     + '\n' +
-    open('CHANGES.txt').read()
+    open('CHANGES.rst').read()
     + '\n')
 
 setup(name='collective.lastmodified',
