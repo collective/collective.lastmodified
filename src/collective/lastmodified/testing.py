@@ -1,43 +1,27 @@
-from plone.app.testing import PloneSandboxLayer
-from plone.app.testing import applyProfile
-from plone.app.testing import PLONE_FIXTURE
+from plone.app.testing import PloneWithPackageLayer
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import FunctionalTesting
 
+from plone.app.robotframework.testing import AUTOLOGIN_LIBRARY_FIXTURE
+
 from plone.testing import z2
 
-from zope.configuration import xmlconfig
+import collective.lastmodified
 
 
-class CollectivelastmodifiedLayer(PloneSandboxLayer):
+COLLECTIVE_LASTMODIFIED = PloneWithPackageLayer(
+    zcml_package=collective.lastmodified,
+    zcml_filename="configure.zcml",
+    gs_profile_id="collective.lastmodified:default",
+    name="COLLECTIVE_LASTMODIFIED",
+)
 
-    defaultBases = (PLONE_FIXTURE,)
-
-    def setUpZope(self, app, configurationContext):
-        # Load ZCML
-        import collective.lastmodified
-        xmlconfig.file(
-            'configure.zcml',
-            collective.lastmodified,
-            context=configurationContext
-        )
-
-        # Install products that use an old-style initialize() function
-        #z2.installProduct(app, 'Products.PloneFormGen')
-
-#    def tearDownZope(self, app):
-#        # Uninstall products installed above
-#        z2.uninstallProduct(app, 'Products.PloneFormGen')
-
-    def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.lastmodified:default')
-
-COLLECTIVE_LASTMODIFIED_FIXTURE = CollectivelastmodifiedLayer()
 COLLECTIVE_LASTMODIFIED_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(COLLECTIVE_LASTMODIFIED_FIXTURE,),
+    bases=(COLLECTIVE_LASTMODIFIED,),
     name="CollectivelastmodifiedLayer:Integration"
 )
+
 COLLECTIVE_LASTMODIFIED_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(COLLECTIVE_LASTMODIFIED_FIXTURE, z2.ZSERVER_FIXTURE),
+    bases=(COLLECTIVE_LASTMODIFIED, AUTOLOGIN_LIBRARY_FIXTURE, z2.ZSERVER_FIXTURE),
     name="CollectivelastmodifiedLayer:Functional"
 )
