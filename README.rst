@@ -1,3 +1,6 @@
+.. image:: https://api.travis-ci.org/brpauwels/collective.lastmodified.png
+   :target: http://travis-ci.org/brpauwels/collective.lastmodified
+
 Overview
 ========
 This add-on provides a viewlet that shows the last modification date of a
