@@ -1,5 +1,5 @@
-.. image:: https://api.travis-ci.org/brpauwels/collective.lastmodified.png
-   :target: http://travis-ci.org/brpauwels/collective.lastmodified
+.. image:: https://api.travis-ci.org/collective/collective.lastmodified.png
+   :target: http://travis-ci.org/collective/collective.lastmodified
 
 Overview
 ========
